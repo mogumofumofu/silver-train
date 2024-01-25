@@ -8,6 +8,7 @@ import logging
 import atexit
 import ast
 flags_debug = False
+flags_logging = False
 
 
 def closing():
@@ -34,7 +35,8 @@ class Logger(object):
         # you might want to specify some extra behavior here.
         pass
 
-sys.stdout = Logger("log.log")
+if flags_logging == True:
+    sys.stdout = Logger("log.log")
 
 
 class Colors:
@@ -57,6 +59,7 @@ def write_data(data):
 data = read_data()
 
 flags_debug = data["debug_flag"]
+flags_logging = data["logging_flag"]
 
 
 
