@@ -12,7 +12,7 @@ flags_logging = False
 
 
 def closing():
-    print(f"{Colors.RED}[DEBUG]{Colors.END} END OF LOG")
+    print(f"[DEBUG] END OF LOG")
 atexit.register(closing)
 
 def read_log():
@@ -39,23 +39,21 @@ if flags_logging == True:
     sys.stdout = Logger("log.log")
 
 
-class Colors:
-    RED = '\033[91m'
-    END = '\033[0m'
-print(f"{Colors.RED}[DEBUG]{Colors.END} BEGINING OF LOG")
+
+print(f"[DEBUG] BEGINING OF LOG")
 data = {"debug_flag": False}
 
 def read_data():
     with open("data.json", "r") as f:
         data = json.load(f)
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} Read json data file: {data}")
+            print(f"[DEBUG] Read json data file: {data}")
         return data
 def write_data(data):
     with open("data.json", "w") as f:
         json.dump(data,f)
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} Wrote json data to file, data: {data}")
+            print(f"[DEBUG] Wrote json data to file, data: {data}")
 data = read_data()
 
 flags_debug = data["debug_flag"]
@@ -114,14 +112,14 @@ def ok():
     cirkel_type = variable.get()
     convert_type = var3.get()
     if flags_debug == True:
-        print(f"{Colors.RED}[DEBUG]{Colors.END} {value}, {lenght_type}, {cirkel_type}, {convert_type}")
+        print(f"[DEBUG] {value}, {lenght_type}, {cirkel_type}, {convert_type}")
     if cirkel_type == "Area":
         area = float(value)
         radie = math.sqrt(area / math.pi)
         diameter = 2 * radie
         omkrets = 2 * math.pi * radie
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
+            print(f"[DEBUG] area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
         
         if convert_type == "Area":
             print(area)
@@ -145,7 +143,7 @@ def ok():
         omkrets = 2 * math.pi * radie
         area = math.pi * radie**2
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
+            print(f"[DEBUG] area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
         
         if convert_type == "Area":
             print(area)
@@ -169,7 +167,7 @@ def ok():
         diameter = 2 * radie
         area = math.pi * radie**2
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
+            print(f"[DEBUG] area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
         
         if convert_type == "Area":
             print(area)
@@ -193,7 +191,7 @@ def ok():
         omkrets = 2 * math.pi * radie
         area = math.pi * radie**2
         if flags_debug == True:
-            print(f"{Colors.RED}[DEBUG]{Colors.END} area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
+            print(f"[DEBUG] area: {area} radie: {radie} diameter: {diameter} omkrets: {omkrets}")
         
         if convert_type == "Area":
             print(area)
@@ -239,7 +237,6 @@ if flags_debug == True:
     read_data_button.grid(row=4,column=2)
     write_data_button = Button(master,text="WRITE DATA",command=write_new_data)
     write_data_button.grid(row=4,column=3)
-
 
 
 
